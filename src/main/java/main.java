@@ -11,6 +11,8 @@ public class main {
             Double result = calculator.calculate(operation);
             System.out.println("Operación: " + operation + "\t Resultado: " + String.valueOf(result));
         }
+
+        System.exit(1);
     }
 
     /**

@@ -14,7 +14,7 @@ public class Calculadora implements Calculator {
   @Override
   public double calculate(String operation) {
     Stack<String> stack = new StackVector<String>();
-    double result = 0;
+    double result = 0 ;
 
     StringBuilder stringBuilder = new StringBuilder(operation);
     operation = stringBuilder.reverse().toString();
