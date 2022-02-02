@@ -3,13 +3,19 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Calculator calculator = new Calculadora();
         ArrayList<String> operations = getOperations();
 
         for (String operation: operations) {
-            Double result = calculator.calculate(operation);
-            System.out.println("Operación: " + operation + "\t Resultado: " + String.valueOf(result));
+            if (!operation.isEmpty()) {
+                Double result = calculator.calculate(operation);
+                if (result == 7777777777777.7777777777777) {
+                    System.out.println("Operación: " + operation + "\t INVÁLIDA. División entre 0");
+                }  else {
+                    System.out.println("Operación: " + operation + "\t Resultado: " + String.valueOf(result));
+                }
+            }
         }
 
         System.exit(1);
