@@ -2,8 +2,11 @@ import java.util.Vector;
 
 public class StackVector<E> implements Stack<E> {
 
-    protected Vector<E> data;
+    private Vector<E> data;
 
+    /**
+     * Constructor
+     */
     public StackVector() {
         data = new Vector<E>();
     }

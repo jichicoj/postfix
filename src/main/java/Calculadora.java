@@ -1,10 +1,12 @@
 import java.util.Vector;
-import java.util.regex.Pattern;
 
-/**
- * @author Joshua y Cindy
- */
 public class Calculadora implements Calculator {
+
+  /**
+   * Constructor
+   */
+  public Calculadora() {}
+
   /**
    * Calculates an entire operation.
    *
@@ -12,7 +14,7 @@ public class Calculadora implements Calculator {
    * @return double with the result of the operation
    */
   @Override
-  public double calculate(String operation) {
+  public double calculate(String operation) throws Exception {
     Stack<String> stack = new StackVector<String>(); // Creación del stack
     double result = 0 ;
 
@@ -46,10 +48,22 @@ public class Calculadora implements Calculator {
 
       double op1 = operands.remove(operands.size() - 1); // Toma el primer operando
       double op2 = operands.remove(operands.size() - 1); // Toma el segundo operando
-      result = execOperation(op1, op2, operator); // Ejecuta la operación
 
-      if (result == 7777777777777.7777777777777) {
-        break;
+      switch (operator) { // Realiza la operación dependiendo del operador enviado
+        case "+":
+          result = op1 + op2;
+          break;
+        case "-":
+          result = op2 - op1;
+          break;
+        case "*":
+          result = op1 * op2;
+          break;
+        case "/":
+          if (op1 == 0) throw new ArithmeticException("Division by 0"); // Si se intenta la división entre 0 arroja una excepción
+
+          result = op2 / op1;
+          break;
       }
 
       stack.add(String.valueOf(result)); // Agrega el resultado de la operación al stack
@@ -60,32 +74,6 @@ public class Calculadora implements Calculator {
     }
     
     return result;
-  }
-
-  /**
-   * Executes the operation depending on which operator was sent
-   * @param op1
-   * @param op2
-   * @param operator
-   * @return
-   */
-  public Double execOperation(Double op1, Double op2, String operator) {
-    switch (operator) { // Realiza la operación dependiendo del operador enviado
-      case "+":
-        return op1 + op2;
-      case "-":
-        return op2 - op1;
-      case "*":
-        return op1 * op2;
-      case "/":
-        if (op1 != 0) {
-          return op2 / op1;
-        } else {
-          return 7777777777777.7777777777777;
-        }
-      default:
-        return null;
-    }
   }
 }
  
