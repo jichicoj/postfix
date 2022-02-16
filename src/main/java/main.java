@@ -4,8 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class main {
+
+    public static Infix infix = new Infix();
     public static void main(String[] args) throws Exception {
         Calculator calculator = new Calculadora(); // Creación de objeto calculadora
+        
         ArrayList<String> operations = getOperations(); // Obtiene las operaciones contenidas en el archivo
 
         for (String operation: operations) { // Itera el archivo de operaciones
@@ -29,30 +32,16 @@ public class main {
      */
     public static ArrayList<String> getOperations() {
         // Creación de file dialog para seleccionar archivo
-        FileDialog dialog = new FileDialog((Frame) null, "Seleccion el archivo con las operaciones");
-        dialog.setFile("*.txt"); // Solo permite que se seleccionen archivos .txt
-        dialog.setMode(FileDialog.LOAD);
-        dialog.setVisible(true);
-        String dir = dialog.getDirectory() + dialog.getFile(); // Obtiene el directorio del archivo seleccionado
+
+        String dir = infix.Getfile(); // Obtiene el directorio del archivo seleccionado
 
         try {
             File file = new File(dir);
 
-            if (!file.exists()) {  // Si por alguna razón el archivo ya no está disponible finaliza la ejecución del programa
-                System.out.println("Archivo especificado no está disponible");
-                System.exit(0);
-            }
+            infix.NotFound(file);
 
             try {
-                BufferedReader buffer = new BufferedReader(new FileReader(dir)); // Lee el archivo
-                ArrayList<String> data = new ArrayList<>();
-                String line = buffer.readLine();
-
-                while (line != null) { // Cada línea del archivo la agrega al arraylist de datos
-                    data.add(line);
-                    line = buffer.readLine();
-                }
-
+                ArrayList<String> data = infix.Reader(dir);
                 return data;
             } catch (FileNotFoundException fnte) {
                 fnte.printStackTrace();
