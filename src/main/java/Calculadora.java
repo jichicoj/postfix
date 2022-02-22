@@ -1,11 +1,25 @@
+import Stack.Stack;
+import Stack.StackFactory;
 import java.util.Vector;
 
 public class Calculadora implements Calculator {
-
+  private static Calculadora calculadora = null;
+  private static String sType = "";
+  private static String lType = "";
   /**
    * Constructor
    */
-  public Calculadora() {}
+  private Calculadora() {}
+
+  public static Calculadora getInstance(String sType, String lType) {
+    if (calculadora == null) {
+      calculadora = new Calculadora();
+      Calculadora.sType = sType;
+      Calculadora.lType = lType;
+    }
+
+    return calculadora;
+  }
 
   /**
    * Calculates an entire operation.
@@ -15,7 +29,10 @@ public class Calculadora implements Calculator {
    */
   @Override
   public double calculate(String operation) throws Exception {
-    Stack<String> stack = new StackVector<String>(); // Creación del stack
+    StackFactory<String> stackFactory = new StackFactory<String>();
+    Stack<String> stack;
+    stack = stackFactory.getStack(sType, lType); // Creación del stack
+
     double result = 0 ;
 
     StringBuilder stringBuilder = new StringBuilder(operation);

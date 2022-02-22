@@ -7,7 +7,6 @@ class CalculadoraTest {
 
     @BeforeEach
     void setUp() {
-        calculator = new Calculadora();
     }
 
     @org.junit.jupiter.api.Test

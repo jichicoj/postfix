@@ -1,6 +1,8 @@
+package Stack;
+
 import java.util.Vector;
 
-public class StackVector<E> implements Stack<E> {
+public class StackVector<E> extends AbstrackStack<E> {
 
     private Vector<E> data;
 
@@ -22,7 +24,7 @@ public class StackVector<E> implements Stack<E> {
     }
 
     /**
-     * If the Stack is not empty, the most recent item will be removed and returned.
+     * If the Stack.Stack is not empty, the most recent item will be removed and returned.
      *
      * @return Item
      */
@@ -32,7 +34,7 @@ public class StackVector<E> implements Stack<E> {
     }
 
     /**
-     * Get the current Item on the Stack (without popping it).
+     * Get the current Item on the Stack.Stack (without popping it).
      *
      * @return Item
      */
@@ -42,9 +44,9 @@ public class StackVector<E> implements Stack<E> {
     }
 
     /**
-     * Check if the Stack is empty.
+     * Check if the Stack.Stack is empty.
      *
-     * @return Boolean indicating if the Stack is empty
+     * @return Boolean indicating if the Stack.Stack is empty
      */
     @Override
     public boolean empty() {
@@ -52,9 +54,9 @@ public class StackVector<E> implements Stack<E> {
     }
 
     /**
-     * Get the size of the Stack.
+     * Get the size of the Stack.Stack.
      *
-     * @return Integer indicating the size of the Stack
+     * @return Integer indicating the size of the Stack.Stack
      */
     @Override
     public int size() {

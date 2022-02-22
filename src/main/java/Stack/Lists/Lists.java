@@ -1,10 +1,6 @@
-package Stack;
+package Stack.Lists;
 
-/**
- * Defines all the methods that a Stack.Stack should have.
- * @param <E> Type of the items stored on the Stack.Stack. Example: String
- */
-public interface Stack<E> {
+public interface Lists<E> {
     /**
      * Add an item to the stack. Will be popped next.
      * @param item
