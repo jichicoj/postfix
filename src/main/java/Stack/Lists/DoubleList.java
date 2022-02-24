@@ -8,27 +8,18 @@ public class DoubleList<E> extends AbstractList<E> {
      */
     @Override
     public void add(E item) {
-
-    }
-
-    /**
-     * If the Stack.Stack is not empty, the most recent item will be removed and returned.
-     *
-     * @return Item
-     */
-    @Override
-    public E remove() {
-        return null;
-    }
-
-    /**
-     * Get the current Item on the Stack.Stack (without popping it).
-     *
-     * @return Item
-     */
-    @Override
-    public E peek() {
-        return null;
+        Node newNode = new Node(item);
+        newNode.next = null;
+        newNode.previous = null;
+        if(head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while(temp.next != null)
+                temp = temp.next;
+            temp.next = newNode;
+            newNode.previous = temp;
+        }
     }
 
     /**
@@ -38,16 +29,6 @@ public class DoubleList<E> extends AbstractList<E> {
      */
     @Override
     public boolean empty() {
-        return false;
-    }
-
-    /**
-     * Get the size of the Stack.Stack.
-     *
-     * @return Integer indicating the size of the Stack.Stack
-     */
-    @Override
-    public int size() {
-        return 0;
+        return size() == 0;
     }
 }

@@ -20,49 +20,59 @@ public class main {
             switch (option) {
                 case 1:
                     calculator = Calculadora.getInstance("V", "N"); // Creación de objeto calculadora
+                    calculate(calculator);
                     break;
                 case 2:
                     calculator = Calculadora.getInstance("A", "N"); // Creación de objeto calculadora
+                    calculate(calculator);
                     break;
                 case 3:
                     System.out.println("Ingrese el tipo de lista que desea utilizar. \n1. Simplemente enlazada" +
                             "\n2. Doblemente enlazada");
                     int op2 = Integer.parseInt(getNumber(keyboard));
+                    boolean done = false;
 
-                    while (calculator != null) {
+                    while (!done) {
                         switch (op2) {
                             case 1:
                                 calculator = Calculadora.getInstance("L", "S"); // Creación de objeto calculadora
+                                done = true;
                                 break;
                             case 2:
                                 calculator = Calculadora.getInstance("L", "D"); // Creación de objeto calculadora
+                                done = true;
                                 break;
                             default:
                                 System.out.println("La opción ingresadad no está definida.");
                         }
                     }
+
+                    calculate(calculator);
                     break;
                 case 4:
                     exit = true;
+                    break;
                 default:
                     System.out.println("La opción ingresadad no está definida.");
             }
+        }
+        System.exit(0);
+    }
 
-            ArrayList<String> operations = getOperations(); // Obtiene las operaciones contenidas en el archivo
+    public static void calculate(Calculator calculator) {
+        ArrayList<String> operations = getOperations(); // Obtiene las operaciones contenidas en el archivo
 
-            for (String operation: operations) { // Itera el archivo de operaciones
-                if (!operation.trim().isEmpty()) { // Verifica que la línea del txt no venga vacía
+        for (String operation: operations) { // Itera el archivo de operaciones
+            if (!operation.trim().isEmpty()) { // Verifica que la línea del txt no venga vacía
 
-                    try {
-                        Double result = calculator.calculate(operation); // Calcula el resultado de la operación
-                        System.out.println("Operación: " + operation + "\t Resultado: " + String.valueOf(result)); // Imprime la operación y su resultado
-                    } catch (Exception e) {
-                        System.out.println("Operación: " + operation + "\t Operación inválida." + "\t ERROR: " + e.getMessage());
-                    }
+                try {
+                    Double result = calculator.calculate(operation); // Calcula el resultado de la operación
+                    System.out.println("Operación: " + operation + "\t Resultado: " + String.valueOf(result)); // Imprime la operación y su resultado
+                } catch (Exception e) {
+                    System.out.println("Operación: " + operation + "\t Operación inválida." + "\t ERROR: " + e.getMessage());
                 }
             }
         }
-        System.exit(0); // Termina la ejecución del programa
     }
 
     /**

@@ -8,7 +8,7 @@ public class StackList<E> extends AbstrackStack<E> {
     private ListFactory<E> listFactory = new ListFactory<E>();
 
     public StackList (String type) {
-        data = listFactory.getList("type");
+        data = listFactory.getList(type);
     }
 
     /**
@@ -18,7 +18,7 @@ public class StackList<E> extends AbstrackStack<E> {
      */
     @Override
     public void add(E item) {
-
+        data.add(item);
     }
 
     /**
@@ -28,7 +28,7 @@ public class StackList<E> extends AbstrackStack<E> {
      */
     @Override
     public E remove() {
-        return null;
+        return data.remove();
     }
 
     /**
@@ -38,7 +38,7 @@ public class StackList<E> extends AbstrackStack<E> {
      */
     @Override
     public E peek() {
-        return null;
+        return data.peek();
     }
 
     /**
@@ -48,6 +48,6 @@ public class StackList<E> extends AbstrackStack<E> {
      */
     @Override
     public int size() {
-        return 0;
+        return data.size();
     }
 }
