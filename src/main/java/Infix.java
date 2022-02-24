@@ -24,9 +24,6 @@ public class Infix {
     }
 
     public ArrayList<String> Reader(String dir) throws IOException{
-
-
-
         BufferedReader buffer = new BufferedReader(new FileReader(dir)); // Lee el archivo
         ArrayList<String> data = new ArrayList<>();
         String line = buffer.readLine();
@@ -37,10 +34,6 @@ public class Infix {
         }
         System.out.println("Funciona");
         return data;
-            
-
-        
-
     }
 
 
