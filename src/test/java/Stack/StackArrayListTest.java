@@ -10,6 +10,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 /**
@@ -32,7 +36,7 @@ public class StackArrayListTest {
         stack.add(5.27);
         stack.add(7.97);
 
-        assertEquals(7.97, stack.remove());
+        assertEquals(Optional.of(7.97), stack.remove());
     }
 
     @Test
@@ -40,7 +44,7 @@ public class StackArrayListTest {
         stack.add(5.27);
         stack.add(7.97);
 
-        assertEquals(7.97, stack.peek());
+        assertEquals(Optional.of(7.97), stack.peek());
     }
 
     @Test
